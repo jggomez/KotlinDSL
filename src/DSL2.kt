@@ -1,20 +1,25 @@
 class Reunion(val nombre: String) {
 
-    val iniciar = this
+    val agendar = this
 
-    infix fun a(hora: IntRange) {
+    infix fun inicio(hora: IntRange) {
+        print("reunión $nombre a las $hora")
+    }
+
+    infix fun final(hora: IntRange) {
         print("reunión $nombre a las $hora")
     }
 }
 
 infix fun String.reunion(block: Reunion.() -> Unit) {
-    Reunion(this).also {
-        it.block()
+    Reunion(this).apply {
+        block()
     }
 }
 
 fun main() {
     "daily" reunion {
-        iniciar a 3..5
+        agendar inicio 3..5
+        agendar final 4..5
     }
 }

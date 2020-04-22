@@ -15,13 +15,13 @@ class Avion() {
     }
 }
 
-fun volar(block: Avion.(Avion) -> Unit) {
+infix fun String.volar(block: Avion.(Avion) -> Unit) {
     val avion = Avion()
     avion.block(avion)
 }
 
 fun main() {
-    volar {
+    "AV 1090" volar {
         it gire derecha
         it gire izquierda
         it acelerar 800
